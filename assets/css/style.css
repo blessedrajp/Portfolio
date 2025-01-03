@@ -350,13 +350,13 @@ h6 {
   position: absolute;
 } */
 
-#hero .darkback { 
-  overflow: hidden;
-  width:100vw;
-  height:100vh;
-  background-color: #000000c2;
-  position: absolute;
-}
+  #hero .darkback { 
+    overflow: hidden;
+    width:100vw;
+    height:100vh;
+    background-color: #000000c2;
+    position: absolute;
+  }
 
 
 .clouds{
