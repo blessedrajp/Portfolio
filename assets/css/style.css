@@ -984,6 +984,17 @@ padding-bottom:80px
 }
 
 
+
+.project-webapp{
+  padding:10px;
+
+}
+
+.project-webapp h6{
+  font-weight: 700;
+}
+
+
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -1248,3 +1259,4 @@ padding-bottom:80px
     padding-right: 20px 15px;
   }
 }
+
