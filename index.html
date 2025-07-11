@@ -56,13 +56,14 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="assets/img/me2.jpg" alt="" class="img-fluid rounded-circle">
+        <img src="assets/img/DP.jpg" alt="" class="img-fluid rounded-circle">
         <h1 class="text-light"><a href="index.html">Blessed Raj P</a></h1>
         <div class="social-links mt-3 text-center">
           <a href="mailto:blessedrajp@gmail.com" class="mail"><i class="bx bx-envelope"></i></a>
-          <a href="whatsapp://send?phone=7305741744" class="watsapp"><i class="bx bxl-whatsapp"></i></a>
-          <a href="https://www.instagram.com/blessed_bj_/" class="instagram"><i class="bx bxl-instagram"></i></a>
           <a href="https://www.linkedin.com/in/blessed-raj-p/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://github.com/blessedrajp" class="watsapp"><i class="bx bxl-github"></i></a>
+          <!-- <a href="whatsapp://send?phone=7305741744" class="watsapp"><i class="bx bxl-whatsapp"></i></a> -->
+          <!-- <a href="https://www.instagram.com/blessed_bj_/" class="instagram"><i class="bx bxl-instagram"></i></a> -->
         </div>
       </div>
 
@@ -127,7 +128,8 @@
                   <li><i class="fa-solid fa-graduation-cap"></i>&nbsp;<strong>Degree:</strong> <span>Bachelor</span>
                   </li>
                   <li><i class="fa-regular fa-envelope"></i>&nbsp; <strong>Email:</strong>
-                    <span>blessedrajp@gmail.com</span></li>
+                    <span>blessedrajp@gmail.com</span>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -139,9 +141,17 @@
             </p>
 
             <div class="resumeview">
-              <button onclick="viewResume()"><i class="fa-regular fa-eye"></i>&nbsp; View Resume</button>
+              <!-- <button onclick="viewResume()"><i class="fa-regular fa-eye"></i>&nbsp; View Resume</button> -->
+              <button class="ui-btn" onclick="viewResume()">
+                <i class="fa-regular fa-eye"></i>&nbsp;
+                <span>
+                  View Resume
+                </span>
+              </button>
               <!-- Download link -->
-              <a href="BLESSEDRAJP.pdf" download><i class="fa-solid fa-download"></i> Download Resume</a>
+               <button class="ui-btn">
+              <a href="BLESSEDRAJP.pdf" download><i class="fa-solid fa-download"></i>&nbsp; <span>Download Resume</span></a>
+               </button>
             </div>
 
 
@@ -295,6 +305,27 @@
               <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
                 <img src="assets/img/mui.png" class="testimonial-img" alt="">
                 <h3>MUI</h3>
+              </div>
+            </div>
+
+             <div class="swiper-slide">
+              <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+                <img src="assets/img/node-js.png" class="testimonial-img" alt="">
+                <h3>Node js</h3>
+              </div>
+            </div>
+
+             <div class="swiper-slide">
+              <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+                <img src="assets/img/express-js.png" class="testimonial-img" alt="">
+                <h3>Express js</h3>
+              </div>
+            </div>
+
+             <div class="swiper-slide">
+              <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+                <img src="assets/img/mongo-db.png" class="testimonial-img" alt="">
+                <h3>Mongo DB</h3>
               </div>
             </div>
             <!-- End skill-item -->
@@ -503,7 +534,7 @@
         </div>
 
 
-         <div class="section-title">
+        <div class="section-title">
           <h3>Websites</h3>
         </div>
 
@@ -665,41 +696,46 @@
 
 
     <!-- ======= Contact Section ======= -->
-    <!-- <section id="contact" class="contact">
-      <div class="container">
+    <section id="contact" class="contact">
+      <!-- <div class="container"> -->
 
-        <div class="section-title">
-          <h2>Contact</h2>
+      <div class="section-title">
+        <h2>Contact</h2>
+      </div>
+
+      <div class="row" data-aos="fade-in">
+
+        <!-- <div class="d-flex"> -->
+
+        <div class="col-lg-4 col-md-6">
+
         </div>
 
-        <div class="row" data-aos="fade-in">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>0 , near railway gate,Salamedu, villupuram, Tamil Nadu </p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>blessedrajp@gmail.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+91 7305741744</p>
-              </div>
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15614.961063605693!2d79.47566079032126!3d11.923155357755727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a535660dcb1f09d%3A0x8e62e82e336c8e90!2sSalamedu%2C%20Viluppuram%2C%20Tamil%20Nadu%20605602!5e0!3m2!1sen!2sin!4v1705997066242!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen>></iframe>
-            </div>
-
+        <div class="row info">
+          <div class="address col-lg-4 col-md-6">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Location:</h4>
+            <p>0 , near railway gate,Salamedu, villupuram, Tamil Nadu </p>
           </div>
 
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+          <div class="email col-lg-4 col-md-6">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>blessedrajp@gmail.com</p>
+          </div>
+
+          <div class="phone col-lg-4 col-md-6">
+            <i class="bi bi-phone"></i>
+            <h4>Call:</h4>
+            <p>+91 7305741744</p>
+          </div>
+
+          <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15614.961063605693!2d79.47566079032126!3d11.923155357755727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a535660dcb1f09d%3A0x8e62e82e336c8e90!2sSalamedu%2C%20Viluppuram%2C%20Tamil%20Nadu%20605602!5e0!3m2!1sen!2sin!4v1705997066242!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen>></iframe> -->
+          <!-- </div> -->
+
+        </div>
+
+        <!-- <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
@@ -726,12 +762,12 @@
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
-          </div>
-
-        </div>
+          </div> -->
 
       </div>
-    </section> -->
+
+      <!-- </div> -->
+    </section>
     <!-- End Contact Section -->
 
   </main><!-- End #main -->
