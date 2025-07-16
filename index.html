@@ -301,6 +301,15 @@
               </div>
             </div>
             <!-- End skill-item -->
+
+            <div class="swiper-slide">
+              <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
+                <img src="assets/img/Angular.png" class="testimonial-img" alt="">
+                <h3>Angular</h3>
+              </div>
+            </div>
+            <!-- End skill-item -->
+
             <div class="swiper-slide">
               <div class="skill-item" data-aos="fade-up" data-aos-delay="400">
                 <img src="assets/img/mui.png" class="testimonial-img" alt="">
@@ -496,7 +505,61 @@
             </ul>
           </div>
         </div> -->
-        <div class="section-title">
+
+        
+  <div class="">
+
+       <div class="section-title">
+          <h3>Web Applications</h3>
+        </div>
+
+
+    <div class="row">
+      <!-- Card 1 -->
+      <div class="col-lg-4 col-md-6 mt-2" >
+        <div class="card p-3 text-left">
+          <img src="assets/img/pdf/react-snippets.png" class="img-fluid mb-2" alt="React Snippets" onclick="openPdfModal('react-snippets.pdf')">
+          <h4 style="color:#149ddd"><a href="https://marketplace.visualstudio.com/items?itemName=BlessedRajP.react-snippets-Advanced">React Snippets Advanced <i class="bx bx-link"></i></a> </h4>
+          <p>A curated and comprehensive collection of high-quality, productivity-boosting VSCode code snippets for modern React and TypeScript development.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-4 col-md-6 mt-2">
+        <div class="card p-3 text-left">
+          <img src="assets/img/pdf/listen-shortcuts.png" class="img-fluid mb-2" alt="Listen Shortcuts" onclick="openPdfModal('listen-shortcuts.pdf')">
+          <h4 style="color:#149ddd"> <a href="https://www.npmjs.com/package/react-keys-shortcuts">Listen shortcuts <i class="bx bx-link"></i></a> </h4>
+          <p>A simple React utility package to easily manage global and component-specific keyboard shortcuts with clean hooks.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-4 col-md-6 mt-2">
+        <div class="card p-3 text-left">
+          <img src="assets/img/pdf/infinitescroll.png" class="img-fluid mb-2" alt="Open Source Guide" onclick="openPdfModal('infinite-scroll.pdf')">
+          <h4 style="color:#149ddd"> <a href="https://www.npmjs.com/package/use-dynamic-infinite-scroll">Dynamic infinite scroll <i class="bx bx-link"></i></a> </h4>
+          <p>use-dynamic-infinite-scroll is a React custom hook that helps you implement infinite scrolling effortlessly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="pdfModal" class="pdf-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closePdfModal()">&times;</span>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper" id="swiperPdfPages">
+          <!-- Slides will be injected here -->
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+           
+        <div class="section-title mt-4">
           <h3>Web Applications</h3>
         </div>
 
@@ -695,6 +758,9 @@
 
 
 
+
+
+
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <!-- <div class="container"> -->
@@ -801,11 +867,13 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="owl/js/owl.carousel.min.js"></script>
+  <!-- <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="owl/js/owl.carousel.min.js"></script> -->
   <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="slick/slick.min.js"></script>
+  <!-- PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
@@ -819,6 +887,106 @@
       window.open(resumeUrl, '_blank');
     }
   </script>
+
+  <script>
+  // Make sure these are loaded before your script:
+// 1. PDF.js library (pdf.js and pdf.worker.js)
+// 2. Swiper JS and CSS
+// 3. Your script should be at the end of the body
+
+const pdfBasePath = 'assets/pdf/';
+let swiperInstance = null;
+
+function openPdfModal(pdfFile) {
+  const modal = document.getElementById("pdfModal");
+  const container = document.getElementById("swiperPdfPages");
+  
+  // Show loading state
+  container.innerHTML = '<div class="pdf-loading">Loading PDF...</div>';
+  modal.style.display = "flex";
+  
+  // Initialize PDF.js
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+  
+  // Load the PDF
+  pdfjsLib.getDocument(pdfBasePath + pdfFile).promise.then(pdf => {
+    container.innerHTML = ""; // Clear loading message
+    
+    // Array to store all page promises
+    const pagePromises = [];
+    
+    // Create a promise for each page
+    for (let i = 1; i <= pdf.numPages; i++) {
+      pagePromises.push(
+        pdf.getPage(i).then(page => {
+          const viewport = page.getViewport({ scale: 1.5 });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          
+          return page.render({
+            canvasContext: context,
+            viewport: viewport
+          }).promise.then(() => {
+            const slide = document.createElement("div");
+            slide.className = "swiper-slide";
+            slide.appendChild(canvas);
+            return slide;
+          });
+        })
+      );
+    }
+    
+    // When all pages are rendered
+    Promise.all(pagePromises).then(slides => {
+      slides.forEach(slide => container.appendChild(slide));
+      
+      // Initialize or reinitialize Swiper
+      if (swiperInstance) {
+        swiperInstance.destroy(true, true);
+      }
+      
+      swiperInstance = new Swiper(".mySwiper", {
+        direction: "horizontal",
+        loop: false,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        keyboard: {
+          enabled: true,
+        },
+      });
+    });
+  }).catch(error => {
+    console.error("PDF loading error:", error);
+    container.innerHTML = '<div class="pdf-loading">Error loading PDF. Please try again.</div>';
+  });
+}
+
+function closePdfModal() {
+  const modal = document.getElementById("pdfModal");
+  modal.style.display = "none";
+  
+  if (swiperInstance) {
+    swiperInstance.destroy(true, true);
+    swiperInstance = null;
+  }
+}
+
+// Close modal when clicking outside content
+document.getElementById("pdfModal").addEventListener("click", function(e) {
+  if (e.target === this) {
+    closePdfModal();
+  }
+});
+</script>
+
 
 
 
